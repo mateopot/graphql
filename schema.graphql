@@ -1,0 +1,68 @@
+type Query {
+   themes: [Theme]
+   languages: [Language]
+   countries: [Country]
+   sources: [Source]
+   scrapings: [SourceScraping]
+   articles: [NewsArticles]
+}
+type Theme {
+   id:ID!
+   token:String
+   nom:String
+   code_langue:String 
+   created_at:String 
+   active:String
+}
+type Language {
+   id:ID!
+   token:String
+   nom_fr:String
+   nom_eng:String
+   code_iso:String 
+   created_at:String 
+   active:String
+   themesByLanguage:[Theme]
+   sourcesByLanguage:[Source]
+}
+type Country {
+   id:ID!
+   token:String
+   nom:String
+   flag:String
+   active:String
+   sourcesByCountry:[Source]
+}
+type Source {
+   id:ID!
+   token:String
+   nom:String
+   url:String
+   token_pays:String
+   token_langue:String
+   created_at:String 
+   scrapingBySource:[SourceScraping]
+}
+type SourceScraping {
+   id:ID!
+   token:String
+   url_scrap:String
+   token_source:String
+   token_theme:String
+   created_at:String 
+   active:String
+   articlesByScraping:[NewsArticles]
+}
+type NewsArticles {
+   id:ID!
+   token:String
+   titre:String
+   subtitle:String
+   href:String
+   image:String
+   pays:String
+   date_published:String
+   token_source_scrap:String
+   created_at:String 
+   tags:String
+}
